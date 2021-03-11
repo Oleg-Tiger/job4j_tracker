@@ -8,7 +8,7 @@ public class Shop {
 
     public static Product of(String name, int price) {
         if ("Oil".equals(name)) {
-            return new LiquidationProduct(name, price - LiquidationProduct.discount()).getProduct();
+            return new LiquidationProduct(name, price).getProduct();
         }
         return new Product(name, price);
     }
