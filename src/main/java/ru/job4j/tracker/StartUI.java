@@ -1,12 +1,14 @@
 package ru.job4j.tracker;
 
-import java.time.format.DateTimeFormatter;
-
 public class StartUI {
     public static void main(String[] args) {
-        Item item = new Item();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MMMM-EEEE-yyyy HH:mm:ss");
-        String date = item.getCreated().format(formatter);
-        System.out.println(date);
+        Tracker tracker = new Tracker();
+        Item application = new Item("Имя заявки");
+        tracker.add(application);
+        if (tracker.findById(1) != null) {
+            System.out.println("id1 " + tracker.findById(1).getName());
+        } else {
+            System.out.println("Заявки c id1 не существует");
+        }
     }
 }
