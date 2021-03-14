@@ -10,10 +10,9 @@ public class College {
         oleg.setGroupNumber("job4j - intern");
         oleg.setDateOfAdmission(LocalDate.of(2021, 2, 24));
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        String date = oleg.getDateOfAdmission().format(formatter);
-        String name = oleg.getFullName();
-        String group = oleg.getGroupNumber();
-        System.out.println(String.format("FullName: %s\nGroup №: %s\nDate of admission: %s", name, group, date));
-
+        String name = "FullName: " + oleg.getFullName();
+        String group = "Group №: " + oleg.getGroupNumber();
+        String date = "Date of admission: " + oleg.getDateOfAdmission().format(formatter);
+        System.out.println(name + System.lineSeparator() + group + System.lineSeparator() + date);
     }
 }
