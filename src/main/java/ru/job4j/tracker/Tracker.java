@@ -58,14 +58,11 @@ public class Tracker {
         int index = indexOf(id);
         boolean accept = index != -1;
         if (accept) {
-            if (index == items.length - 1) {
-                items[index] = null;
-            } else {
                 System.arraycopy(items, index + 1, items, index, size - index - 1);
                 items[size - 1] = null;
                 size--;
             }
-        }
+
         return accept;
     }
 }
