@@ -10,5 +10,6 @@ public class StartUI {
         } else {
             System.out.println("Заявки c id1 не существует");
         }
+        System.out.println(application);
     }
 }
