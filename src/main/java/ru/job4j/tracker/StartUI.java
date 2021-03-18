@@ -71,7 +71,7 @@ public class StartUI {
         boolean run = true;
         while (run) {
             this.showMenu();
-            int select = input.askInt("");
+            int select = input.askInt("Select");
             if (select == 0) {
                 createItem(input, tracker);
             } else if (select == 1) {
@@ -101,7 +101,6 @@ public class StartUI {
         System.out.println("4. Find item by Id");
         System.out.println("5. Find items by name");
         System.out.println("6. Exit Program");
-        System.out.println("Select:");
     }
 
     public static void main(String[] args) {
