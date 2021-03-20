@@ -11,7 +11,7 @@ public class StartUITest {
     public void whenCreateItem() {
         Output out = new StubOutput();
         Input in = new StubInput(
-                new String[] {"0", "Item name", "1"}
+                new String[]{"0", "Item name", "1"}
         );
         Tracker tracker = new Tracker();
         UserAction[] actions = {
@@ -28,7 +28,7 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("Replaced item"));
         Input in = new StubInput(
-                new String[] {"0", String.valueOf(item.getId()), "New item name", "1"}
+                new String[]{"0", String.valueOf(item.getId()), "New item name", "1"}
         );
         UserAction[] actions = {
                 new ReplaceAction(out),
@@ -44,7 +44,7 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("Deleted item"));
         Input in = new StubInput(
-                new String[] {"0", String.valueOf(item.getId()), "1"}
+                new String[]{"0", String.valueOf(item.getId()), "1"}
         );
         UserAction[] actions = {
                 new DeleteAction(out),
@@ -58,7 +58,7 @@ public class StartUITest {
     public void whenExit() {
         Output out = new StubOutput();
         Input in = new StubInput(
-                new String[] {"0"}
+                new String[]{"0"}
         );
         Tracker tracker = new Tracker();
         UserAction[] actions = {
@@ -68,5 +68,47 @@ public class StartUITest {
         assertThat(out.toString(), is(
                 "Menu." + System.lineSeparator() + "0. Exit Program" + System.lineSeparator()
         ));
+    }
+
+    @Test
+    public void whenShow() {
+        Output out = new StubOutput();
+        Input in = new StubInput(new String[]{"0", "1"});
+        Tracker tracker = new Tracker();
+        UserAction[] actions = {new ShowAction(out), new ExitAction()};
+        new StartUI(out).init(in, tracker, actions);
+        String result1 = "Menu." + System.lineSeparator() + "0. Show all items" +
+                System.lineSeparator() + "1. Exit Program" + System.lineSeparator();
+        String result2 = "===  Show all items ===" + System.lineSeparator() +
+                "Items not found" + System.lineSeparator();
+        assertThat(out.toString(), is(result1 + result2 + result1));
+    }
+
+    @Test
+    public void whenFindById() {
+        Output out = new StubOutput();
+        Input in = new StubInput(new String[]{"0", "100", "1"});
+        Tracker tracker = new Tracker();
+        UserAction[] actions = {new FindByIdAction(out), new ExitAction()};
+        new StartUI(out).init(in, tracker, actions);
+        String result1 = "Menu." + System.lineSeparator() + "0. Find item by Id" + System.lineSeparator() +
+                "1. Exit Program" + System.lineSeparator();
+        String result2 = "=== Search item by id ===" + System.lineSeparator() +
+                "The item with entered id was not found" + System.lineSeparator();
+        assertThat(out.toString(), is(result1 + result2 + result1));
+    }
+
+    @Test
+    public void whenFindByName() {
+        Output out = new StubOutput();
+        Input in = new StubInput(new String[]{"0", "name", "1"});
+        Tracker tracker = new Tracker();
+        UserAction[] actions = {new FindByNameAction(out), new ExitAction()};
+        new StartUI(out).init(in, tracker, actions);
+        String result1 = "Menu." + System.lineSeparator() + "0. Find items by name" + System.lineSeparator() +
+                "1. Exit Program" + System.lineSeparator();
+        String result2 = "=== Search items by name ===" + System.lineSeparator() +
+                "Items with entered name was not found" + System.lineSeparator();
+        assertThat(out.toString(), is(result1 + result2 + result1));
     }
 }
