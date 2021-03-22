@@ -176,4 +176,36 @@ public class StartUITest {
                 )
         );
     }
+
+    @Test
+    public void whenInvalidInput() {
+        Output output = new StubOutput();
+        Input input = new ValidateInput(output, new StubInput(new String[]{"one", "1"}));
+        int selected = input.askInt("Enter menu:");
+        assertThat(selected, is(1));
+    }
+
+    @Test
+    public void whenNegativeInput() {
+        Output output = new StubOutput();
+        Input input = new ValidateInput(output, new StubInput(new String[]{"-1"}));
+        int selected = input.askInt("Enter menu:");
+        assertThat(selected, is(-1));
+    }
+
+    @Test
+    public void whenMultipleValidInput() {
+        Output output = new StubOutput();
+        Input input = new ValidateInput(output, new StubInput(new String[]{"1", "2", "3"}));
+        int selected = input.askInt("Enter menu:");
+        assertThat(selected, is(1));
+    }
+
+    @Test
+    public void whenValidInput() {
+        Output output = new StubOutput();
+        Input input = new ValidateInput(output, new StubInput(new String[]{"2"}));
+        int selected = input.askInt("Enter menu:");
+        assertThat(selected, is(2));
+    }
 }
