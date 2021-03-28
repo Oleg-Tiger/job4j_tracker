@@ -50,35 +50,35 @@ public class TrackerTest {
     @Test
     public void WhenSortedByIdMinToMax() {
         List<Item> list = new ArrayList<>();
-        Item item1 = new Item("name1", 333);
-        Item item2 = new Item("name2", 3);
-        Item item3 = new Item("name3", 33);
+        Item item1 = new Item("name1", 1);
+        Item item2 = new Item("name2", 2);
+        Item item3 = new Item("name3", 3);
         list.add(item3);
         list.add(item1);
         list.add(item2);
         Collections.sort(list, new SortByIdItemMinToMax());
-        assertThat(list, is(Arrays.asList(item2, item3, item1)));
+        assertThat(list, is(Arrays.asList(item1, item2, item3)));
     }
 
     @Test
     public void WhenSortedByIdMaxToMin() {
         List<Item> list = new ArrayList<>();
-        Item item1 = new Item("name1", 333);
-        Item item2 = new Item("name2", 3);
-        Item item3 = new Item("name3", 33);
+        Item item1 = new Item("name1", 1);
+        Item item2 = new Item("name2", 2);
+        Item item3 = new Item("name3", 3);
         list.add(item3);
         list.add(item1);
         list.add(item2);
         Collections.sort(list, new SortByIdItemMaxToMin());
-        assertThat(list, is(Arrays.asList(item1, item3, item2)));
+        assertThat(list, is(Arrays.asList(item3, item2, item1)));
     }
 
     @Test
     public void WhenSortedByNameMinToMax() {
         List<Item> list = new ArrayList<>();
-        Item item1 = new Item("name1", 333);
-        Item item2 = new Item("name2", 3);
-        Item item3 = new Item("name3", 33);
+        Item item1 = new Item("name1", 1);
+        Item item2 = new Item("name2", 2);
+        Item item3 = new Item("name3", 3);
         list.add(item3);
         list.add(item1);
         list.add(item2);
@@ -89,9 +89,9 @@ public class TrackerTest {
     @Test
     public void WhenSortedByNameMaxToMin() {
         List<Item> list = new ArrayList<>();
-        Item item1 = new Item("name1", 333);
-        Item item2 = new Item("name2", 3);
-        Item item3 = new Item("name3", 33);
+        Item item1 = new Item("name1", 1);
+        Item item2 = new Item("name2", 2);
+        Item item3 = new Item("name3", 3);
         list.add(item3);
         list.add(item1);
         list.add(item2);
