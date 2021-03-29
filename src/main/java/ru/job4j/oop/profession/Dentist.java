@@ -4,7 +4,8 @@ public class Dentist extends Doctor {
 
     private String adultOrChild; //Взрослый или детский врач
 
-    public Dentist(String name, String surname, String education, String birthday, int patientsNumber, String adultOrChild) {
+    public Dentist(String name, String surname, String education,
+                   String birthday, int patientsNumber, String adultOrChild) {
         super(name, surname, education, birthday, patientsNumber);
         this.adultOrChild = adultOrChild;
     }

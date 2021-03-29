@@ -15,7 +15,8 @@ public class Matches {
                 int matches = Integer.parseInt(input.nextLine());
                 while (matches < 1 || matches > 3 || matches > count) {
                     System.out.print("Вы должны ввести число не менее 1 и не более 3.");
-                    System.out.println(" Также обратите внимание на количество оставшихся спичек: " + count);
+                    System.out.print(" Также обратите внимание на количество оставшихся спичек: ");
+                    System.out.println(count);
                     System.out.println(player + " повторите ввод:");
                     matches = Integer.parseInt(input.nextLine());
                 }

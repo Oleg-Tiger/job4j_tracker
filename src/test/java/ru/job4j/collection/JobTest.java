@@ -2,14 +2,15 @@ package ru.job4j.collection;
 
 import org.junit.Test;
 import java.util.Comparator;
-
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
 
 public class JobTest {
     @Test
     public void whenComparatorByNameAndProrityDesc() {
-        Comparator<Job> cmpNamePriority = new JobSortedByNameDesc().thenComparing(new JobSortedByPriorityDesc());
+        Comparator<Job> cmpNamePriority = new JobSortedByNameDesc().thenComparing(
+                new JobSortedByPriorityDesc()
+        );
         int rsl = cmpNamePriority.compare(
                 new Job("Impl task", 0),
                 new Job("Fix bug", 1)
@@ -19,7 +20,9 @@ public class JobTest {
 
     @Test
     public void whenComparatorByNameAndProrityAsc() {
-        Comparator<Job> cmpNamePriority = new JobSortedByNameAsc().thenComparing(new JobSortedByPriorityAsc());
+        Comparator<Job> cmpNamePriority = new JobSortedByNameAsc().thenComparing(
+                new JobSortedByPriorityAsc()
+        );
         int rsl = cmpNamePriority.compare(
                 new Job("Impl task", 1),
                 new Job("Impl task", 0)
@@ -53,7 +56,6 @@ public class JobTest {
         );
         assertThat(rsl, lessThan(0));
     }
-
 
     @Test
     public void whenComparatorByPriorityAscIsEq() {

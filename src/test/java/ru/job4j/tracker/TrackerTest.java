@@ -48,7 +48,7 @@ public class TrackerTest {
     }
 
     @Test
-    public void WhenSortedByIdMinToMax() {
+    public void whenSortedByIdAsc() {
         List<Item> list = new ArrayList<>();
         Item item1 = new Item("name1", 1);
         Item item2 = new Item("name2", 2);
@@ -61,7 +61,7 @@ public class TrackerTest {
     }
 
     @Test
-    public void WhenSortedByIdMaxToMin() {
+    public void whenSortedByIdDesc() {
         List<Item> list = new ArrayList<>();
         Item item1 = new Item("name1", 1);
         Item item2 = new Item("name2", 2);
@@ -74,7 +74,7 @@ public class TrackerTest {
     }
 
     @Test
-    public void WhenSortedByNameMinToMax() {
+    public void whenSortedByNameAsc() {
         List<Item> list = new ArrayList<>();
         Item item1 = new Item("name1", 1);
         Item item2 = new Item("name2", 2);
@@ -87,7 +87,7 @@ public class TrackerTest {
     }
 
     @Test
-    public void WhenSortedByNameMaxToMin() {
+    public void whenSortedByNameDesc() {
         List<Item> list = new ArrayList<>();
         Item item1 = new Item("name1", 1);
         Item item2 = new Item("name2", 2);
