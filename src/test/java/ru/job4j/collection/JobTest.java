@@ -37,7 +37,7 @@ public class JobTest {
     }
 
     @Test
-    public void whenComparatorByNameDesc() {
+    public void whenComparatorByNameDescIsEq() {
         int rsl = new JobSortedByNameDesc().compare(
                 new Job("Impl task", 1),
                 new Job("Impl task", 0)
@@ -45,14 +45,32 @@ public class JobTest {
         assertThat(rsl, is(0));
     }
 
+    @Test
+    public void whenComparatorByNameDesc() {
+        int rsl = new JobSortedByNameDesc().compare(
+                new Job("Rem task", 1),
+                new Job("Impl task", 0)
+        );
+        assertThat(rsl, lessThan(0));
+    }
+
 
     @Test
-    public void whenComparatorByPriorityAsc() {
+    public void whenComparatorByPriorityAscIsEq() {
         int rsl = new JobSortedByPriorityAsc().compare(
                 new Job("Impl task", 1),
                 new Job("Rem task", 1)
         );
         assertThat(rsl, is(0));
+    }
+
+    @Test
+    public void whenComparatorByPriorityAsc() {
+        int rsl = new JobSortedByPriorityAsc().compare(
+                new Job("Impl task", 2),
+                new Job("Rem task", 1)
+        );
+        assertThat(rsl, greaterThan(0));
     }
 
     @Test
