@@ -2,7 +2,17 @@ package ru.job4j.bank;
 
 import java.util.Objects;
 
+/**
+ * Данный класс описывает модель счёта пользователя.
+ * @author OLEG ERSHOV
+ * @version 1.0
+ */
 public class Account {
+
+    /**
+     * Хранение реквизитов счёта осущестивляется в переменной requisite типа String.
+     * Остаток по балансу на данном счёте хранится в переменной balance типа int.
+     */
     private String requisite;
     private double balance;
 
@@ -27,6 +37,11 @@ public class Account {
         this.balance = balance;
     }
 
+    /**
+     * Переопределённый метод equals().
+     * Возвращает true, если ссылки на объекты равны, либо, если
+     * равны значения полей requisite двух объектов.
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -39,6 +54,10 @@ public class Account {
         return Objects.equals(requisite, account.requisite);
     }
 
+    /**
+     * Переопределённый метод hashCode().
+     * Возвращает true, если равны хэш-коды полей requisite для двух объектов.
+     */
     @Override
     public int hashCode() {
         return Objects.hash(requisite);
