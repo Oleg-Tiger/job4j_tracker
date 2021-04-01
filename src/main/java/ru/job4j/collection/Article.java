@@ -6,8 +6,10 @@ import java.util.Set;
 public class Article {
     public static boolean generateBy(String origin, String line) {
         boolean rsl = true;
+        origin = origin.replaceAll("\\p{P}", "");
+        line = line.replaceAll("\\p{P}", "");
         Set<String> orig = new HashSet<>();
-        for (String str : origin.split("[\s.,:;!?]")) {
+        for (String str : origin.split(" ")) {
             orig.add(str);
         }
         for (String str : line.split(" ")) {
