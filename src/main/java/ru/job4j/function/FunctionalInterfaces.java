@@ -7,7 +7,6 @@ import java.util.Map;
 import java.util.function.*;
 
 public class FunctionalInterfaces {
-    @SuppressWarnings("checkstyle:WhitespaceAround")
     public static void main(String[] args) {
         Map<Integer, String> map = new HashMap<>();
         BiConsumer<Integer, String> biCon = (integer, s) -> map.put(integer, s);
@@ -25,10 +24,8 @@ public class FunctionalInterfaces {
                 System.out.println("key: " + i + " value: " + map.get(i));
             }
         }
-
         Supplier<List<String>> sup = () -> new ArrayList<>(map.values());
         List<String> strings = sup.get();
-
         Consumer<String> con = (s) -> System.out.println(s);
         Function<String, String> func = (s) -> s.toUpperCase();
         for (String str : strings) {
