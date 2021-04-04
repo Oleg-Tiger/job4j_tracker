@@ -1,6 +1,6 @@
 package ru.job4j.lambda;
 
-import java.util.function.Function;
+import java.util.function.Supplier;
 
 public class ScopeInside {
     public static void main(String[] args) {
@@ -8,14 +8,15 @@ public class ScopeInside {
         int total = 0;
         for (int i = 0; i < number.length; i++) {
             int num = number[i];
+            int x = total;
             total = add(
-                    (x) ->  x + num, total
+                    () -> x + num
             );
         }
         System.out.println(total);
     }
 
-    private static Integer add(Function<Integer, Integer> calc, int a) {
-        return calc.apply(a);
+    private static Integer add(Supplier<Integer> calc) {
+        return calc.get();
     }
 }
