@@ -30,7 +30,7 @@ public class FunctionRangeTest {
     }
 
     @Test
-    public void whenStartGreaterThanFirst() {
+    public void whenStartGreaterThenEnd() {
         List<Double> result = new FunctionRange().diapason(4, 1, x -> x * x + 2 * x + 1);
         assertThat(result.size(), is(0));
     }
