@@ -7,8 +7,10 @@ import java.util.function.Function;
 public class FunctionRange {
     public  List<Double> diapason(int start, int end, Function<Double, Double> func) {
         List<Double> rsl = new ArrayList<>();
-        if (start >= end) {
-            System.out.println("The second number of the range must be greater than the first");
+        if (start > end) {
+            for (int i  = start; i > end; i--) {
+                rsl.add(func.apply((double) i));
+            }
         }
         for (int i = start; i < end; i++) {
             rsl.add(func.apply((double) i));

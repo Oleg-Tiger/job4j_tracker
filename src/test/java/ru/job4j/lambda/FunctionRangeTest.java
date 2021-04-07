@@ -9,6 +9,13 @@ import static org.junit.Assert.assertThat;
 public class FunctionRangeTest {
 
     @Test
+    public void whenLinearFunctionAndStartGreaterThanEndThenLinearResults() {
+        List<Double> result = new FunctionRange().diapason(8, 5, x -> 2 * x + 1);
+        List<Double> expected = Arrays.asList(17D, 15D, 13D);
+        assertThat(result, is(expected));
+    }
+
+    @Test
     public void whenLinearFunctionThenLinearResults() {
         List<Double> result = new FunctionRange().diapason(5, 8, x -> 2 * x + 1);
         List<Double> expected = Arrays.asList(11D, 13D, 15D);
@@ -30,8 +37,8 @@ public class FunctionRangeTest {
     }
 
     @Test
-    public void whenStartGreaterThenEnd() {
-        List<Double> result = new FunctionRange().diapason(4, 1, x -> x * x + 2 * x + 1);
+    public void whenStartEqualsThenEnd() {
+        List<Double> result = new FunctionRange().diapason(4, 4, x -> x * x + 2 * x + 1);
         assertThat(result.size(), is(0));
     }
 
