@@ -37,7 +37,7 @@ public class FunctionRangeTest {
     }
 
     @Test
-    public void whenStartEqualsThenEnd() {
+    public void whenStartEqualsEnd() {
         List<Double> result = new FunctionRange().diapason(4, 4, x -> x * x + 2 * x + 1);
         assertThat(result.size(), is(0));
     }

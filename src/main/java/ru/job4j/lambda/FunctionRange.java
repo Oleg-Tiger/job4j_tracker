@@ -11,9 +11,10 @@ public class FunctionRange {
             for (int i  = start; i > end; i--) {
                 rsl.add(func.apply((double) i));
             }
-        }
-        for (int i = start; i < end; i++) {
+        } else if (end > start) {
+            for (int i = start; i < end; i++) {
             rsl.add(func.apply((double) i));
+            }
         }
         return rsl;
     }
