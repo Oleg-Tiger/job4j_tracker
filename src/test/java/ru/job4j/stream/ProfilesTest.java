@@ -15,9 +15,24 @@ public class ProfilesTest {
         );
         List<Address> rsl = new Profiles().collect(prof);
         List<Address> expected = List.of(
+                new Address("Воскресенск", "Победы", 10, 47),
                 new Address("Москва", "Молодёжная", 3, 1),
-                new Address("Санкт-Петербург", "Степана Разина", 12, 24),
-                new Address("Воскресенск", "Победы", 10, 47)
+                new Address("Санкт-Петербург", "Степана Разина", 12, 24)
+        );
+        assertThat(rsl, is(expected));
+    }
+
+    @Test
+    public void whenAddressesAreTheSame() {
+        List<Profile> prof = List.of(
+                new Profile(new Address("Санкт-Петербург", "Степана Разина", 12, 24)),
+                new Profile(new Address("Москва", "Молодёжная", 3, 1)),
+                new Profile(new Address("Москва", "Молодёжная", 3, 1))
+        );
+        List<Address> rsl = new Profiles().collect(prof);
+        List<Address> expected = List.of(
+                new Address("Москва", "Молодёжная", 3, 1),
+                new Address("Санкт-Петербург", "Степана Разина", 12, 24)
         );
         assertThat(rsl, is(expected));
     }
