@@ -55,14 +55,11 @@ public class BankService {
      * с такими паспортными данными не найден.
      */
     public User findByPassport(String passport) {
-        User result = null;
-        for (User user : users.keySet()) {
-            if (user.getPassport().equals(passport)) {
-                result = user;
-                break;
-            }
-        }
-        return result;
+        return users.keySet()
+                .stream()
+                .filter(x -> x.getPassport().equals(passport))
+                .findFirst()
+                .orElse(null);
     }
 
     /**
@@ -74,19 +71,16 @@ public class BankService {
      * у пользователя с переданными паспортными данными. Иначе, возвращает null.
      */
     public Account findByRequisite(String passport, String requisite) {
-       Account result = null;
        User user = findByPassport(passport);
         if (user != null) {
-            List<Account> accounts = users.get(user);
-            for (Account account : accounts) {
-               if (account.getRequisite().equals(requisite)) {
-                   result = account;
-                   break;
-               }
-            }
+            return users.get(user)
+                    .stream()
+                    .filter(x -> x.getRequisite().equals(requisite))
+                    .findFirst()
+                    .orElse(null);
         }
-       return result;
-    }
+        return null;
+        }
 
     /**
      * Метод принимает на вход паспортные данные двух пользователей и двое реквизитов счетов, а
