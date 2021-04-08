@@ -11,8 +11,7 @@ public class FunctionRangeTest {
     @Test
     public void whenLinearFunctionAndStartGreaterThanEndThenLinearResults() {
         List<Double> result = new FunctionRange().diapason(8, 5, x -> 2 * x + 1);
-        List<Double> expected = Arrays.asList(17D, 15D, 13D);
-        assertThat(result, is(expected));
+        assertThat(result.size(), is(0));
     }
 
     @Test
