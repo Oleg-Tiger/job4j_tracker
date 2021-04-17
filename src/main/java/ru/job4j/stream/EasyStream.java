@@ -6,15 +6,18 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class EasyStream {
-    private List<Integer> list = new ArrayList<>();
+    private List<Integer> list;
+
+    private EasyStream(List<Integer> list) {
+        this.list = list;
+    }
 
     public static EasyStream of(List<Integer> source) {
-        EasyStream eStream = new EasyStream();
-        eStream.list.addAll(source);
-        return eStream;
+        return new EasyStream(source);
     }
 
     public EasyStream map(Function<Integer, Integer> fun) {
+       list = new ArrayList<>(list);
         for (int i = 0; i < list.size(); i++) {
             list.set(i, fun.apply(list.get(i)));
         }
