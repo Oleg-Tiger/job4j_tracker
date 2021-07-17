@@ -15,7 +15,7 @@ public class ShowAction implements UserAction {
     }
 
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public boolean execute(Input input, Store tracker) {
         out.println("===  Show all items ===");
         List<Item> rsl = tracker.findAll();
         if (rsl.size() > 0) {
