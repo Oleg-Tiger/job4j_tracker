@@ -109,7 +109,7 @@ public class SqlTracker implements Store {
     @Override
     public List<Item> findByName(String key) {
         List<Item> rsl = new ArrayList<>();
-        String sql = String.format("select * from items where name = %s", key);
+        String sql = String.format("select * from items where name = \'%s\'", key);
         try (PreparedStatement statement = cn.prepareStatement(sql)) {
             try (ResultSet rs = statement.executeQuery()) {
                 while (rs.next()) {
