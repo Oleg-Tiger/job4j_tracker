@@ -2,7 +2,7 @@ package ru.job4j.oop.profession;
 
 public class Engineer extends Profession {
 
-    private int experience; //опыт работы
+    private int experience;
 
     public Engineer(String name, String surname, String education,
                     String birthday, int experience) {
@@ -16,5 +16,4 @@ public class Engineer extends Profession {
 
     public void getAcquaintedWithTheProject() {
     }
-    //ознакомиться с проектом
 }

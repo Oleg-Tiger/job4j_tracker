@@ -2,7 +2,7 @@ package ru.job4j.oop.profession;
 
 public class Dentist extends Doctor {
 
-    private String adultOrChild; //Взрослый или детский врач
+    private String adultOrChild;
 
     public Dentist(String name, String surname, String education,
                    String birthday, int patientsNumber, String adultOrChild) {
@@ -16,15 +16,14 @@ public class Dentist extends Doctor {
 
     public void cureATooth(Diagnosis diagnosis) {
 
-    } //вылечить зуб
+    }
 
     public void putASeal() {
 
     }
-    //Поставить пломбу
 
     public void pullOutATooth() {
 
     }
-    //Выдернуть зуб
+
 }

@@ -2,7 +2,7 @@ package ru.job4j.oop.profession;
 
 public class Programmer extends Engineer {
 
-    private String programmingLanguage; //на каком языке программирования пишет
+    private String programmingLanguage;
 
     public Programmer(String name, String surname, String education, String birthday,
                       int experience, String programmingLanguage) {
@@ -17,5 +17,5 @@ public class Programmer extends Engineer {
     public NewClass writeAClass() {
         return new NewClass();
     }
-    // Написать новый класс
+
 }

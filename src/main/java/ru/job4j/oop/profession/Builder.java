@@ -8,5 +8,5 @@ public class Builder extends Engineer {
 
     public Estimate makeAnEstimate() {
         return new Estimate();
-    } //составить смету на выполненные работы;
+    }
 }
