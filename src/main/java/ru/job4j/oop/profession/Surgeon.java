@@ -14,9 +14,7 @@ public class Surgeon extends Doctor {
         return doOperation;
     }
 
-        public Recipe writeARecipe(Diagnosis diagnosis) {
+    public Recipe writeARecipe(Diagnosis diagnosis) {
         return new Recipe();
     }
-
-
 }
