@@ -8,4 +8,5 @@
     <include file="scripts/001_ddl_create_table_items.sql" relativeToChangelogFile="true"/>
     <include file="scripts/002_ddl_create_roles_table.sql" relativeToChangelogFile="true"/>
     <include file="scripts/003_ddl_create_users_table.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/004_create_user_notifications_table.sql" relativeToChangelogFile="true"/>
 </databaseChangeLog>
