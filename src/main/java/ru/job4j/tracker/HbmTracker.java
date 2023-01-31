@@ -44,7 +44,7 @@ public class HbmTracker implements Store, AutoCloseable {
                             "UPDATE Item SET name = :fName, created = :fCreated WHERE id = :fId")
                     .setParameter("fName", item.getName())
                     .setParameter("fCreated", item.getCreated())
-                    .setParameter("fId", item.getId())
+                    .setParameter("fId", id)
                     .executeUpdate();
             session.getTransaction().commit();
         } catch (Exception e) {
@@ -78,7 +78,7 @@ public class HbmTracker implements Store, AutoCloseable {
     public List<Item> findAll() {
         Session session = sf.openSession();
         session.beginTransaction();
-        List<Item> result = session.createQuery("from ru.job4j.tracker.Item", Item.class).list();
+        List<Item> result = session.createQuery("from Item", Item.class).list();
         session.getTransaction().commit();
         session.close();
         return result;
@@ -88,7 +88,7 @@ public class HbmTracker implements Store, AutoCloseable {
     public List<Item> findByName(String key) {
         Session session = sf.openSession();
         Query<Item> query = session.createQuery(
-                "from User as i where i.name = :fName", Item.class);
+                "from Item as i where i.name = :fName", Item.class);
         query.setParameter("fName", key);
         List<Item> result = query.getResultList();
         session.close();
