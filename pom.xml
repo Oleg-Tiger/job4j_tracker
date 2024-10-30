@@ -10,19 +10,22 @@
     <packaging>jar</packaging>
 
     <properties>
-        <maven.compiler.source>14</maven.compiler.source>
-        <maven.compiler.target>14</maven.compiler.target>
+        <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <docker_db_url_jdbc>${JDBC_URL}</docker_db_url_jdbc>
     </properties>
 
     <profiles>
         <profile>
             <id>test</id>
             <properties>
-                <db.url>jdbc:h2:${basedir}/testdb;MODE=PostgreSQL;CASE_INSENSITIVE_IDENTIFIERS=TRUE;</db.url>
-                <db.username></db.username>
-                <db.password></db.password>
-                <db.driver>org.h2.Driver</db.driver>
+                <liquibase.changeLogFile>db/master.xml</liquibase.changeLogFile>
+                <liquibase.url>jdbc:h2:./testdb;MODE=PostgreSQL;CASE_INSENSITIVE_IDENTIFIERS=TRUE;</liquibase.url>
+                <liquibase.username></liquibase.username>
+                <liquibase.password></liquibase.password>
             </properties>
             <activation>
                 <activeByDefault>true</activeByDefault>
@@ -31,10 +34,19 @@
         <profile>
             <id>production</id>
             <properties>
-                <db.url>jdbc:postgresql://127.0.0.1:5432/tracker</db.url>
-                <db.username>postgres</db.username>
-                <db.password>password</db.password>
-                <db.driver>org.postgresql.Driver</db.driver>
+                <liquibase.changeLogFile>db/master.xml</liquibase.changeLogFile>
+                <liquibase.url>jdbc:postgresql://127.0.0.1:5432/tracker</liquibase.url>
+                <liquibase.username>postgres</liquibase.username>
+                <liquibase.password>password</liquibase.password>
+            </properties>
+        </profile>
+        <profile>
+            <id>docker</id>
+            <properties>
+                <liquibase.changeLogFile>db/master.xml</liquibase.changeLogFile>
+                <liquibase.url>${docker_db_url_jdbc}</liquibase.url>
+                <liquibase.username>postgres</liquibase.username>
+                <liquibase.password>password</liquibase.password>
             </properties>
         </profile>
     </profiles>
@@ -143,14 +155,12 @@
             <plugin>
                 <groupId>org.liquibase</groupId>
                 <artifactId>liquibase-maven-plugin</artifactId>
-                <version>3.6.2</version>
+                <version>4.15.0</version>
                 <configuration>
-                    <changeLogFile>${basedir}/db/master.xml</changeLogFile>
-                    <url>${db.url}</url>
-                    <driver>${db.driver}</driver>
-                    <username>${db.username}</username>
-                    <password>${db.password}</password>
-                    <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
+                    <changeLogFile>${liquibase.changeLogFile}</changeLogFile>
+                    <url>${liquibase.url}</url>
+                    <username>${liquibase.username}</username>
+                    <password>${liquibase.password}</password>
                 </configuration>
                 <executions>
                     <execution>
